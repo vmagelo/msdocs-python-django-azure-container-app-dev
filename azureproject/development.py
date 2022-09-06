@@ -1,6 +1,5 @@
 import os
 from .settings import *
-from .get_token import get_token
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -18,7 +17,6 @@ DATABASES = {
         'NAME': os.environ['DBNAME'],
         'HOST': os.environ['DBHOST'],
         'USER': os.environ['DBUSER'],
-        'PASSWORD': 'set with get_token()'
+        'PASSWORD': os.environ['DBPASS'],
     }
 }
-get_token()
