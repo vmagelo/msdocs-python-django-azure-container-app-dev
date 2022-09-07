@@ -11,18 +11,15 @@ DEBUG_PROPAGATE_EXCEPTIONS = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
+# Configure database connection for Azure PostgreSQL instance.
 # DBHOST is only the server name, not the full URL
-hostname = os.environ['DBHOST']
-username = os.environ['DBUSER'] + "@" + os.environ['DBHOST']
-
-# Configure Postgres database; the full username for PostgreSQL flexible server is
-# username (not @sever-name).
+# The full username for PostgreSQL flexible server is username (not @server-name).
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ['DBNAME'],
-        'HOST': hostname + ".postgres.database.azure.com",
-        'USER': username,
+        'HOST': os.environ['DBHOST'] + ".postgres.database.azure.com",
+        'USER': os.environ['DBUSER'],
         'PASSWORD': os.environ['DBPASS'], 
     }
 }

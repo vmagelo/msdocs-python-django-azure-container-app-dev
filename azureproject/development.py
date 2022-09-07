@@ -9,13 +9,17 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 ALLOWED_HOSTS = ['*']
 
-# Configure Postgres database for local development
-#   Set these environment variables in the .env file for this project.  
+# Configure connection setting for local PostgreSQL instance.
+# Set these environment variables in the .env file for this project.  
+
+# Allow local to use remote database without changing form of environment variables.
+host = os.environ['DBHOST'] + ".postgres.database.azure.com" if 'REMOTE_POSTGRESQL' in os.environ else os.environ['DBHOST']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ['DBNAME'],
-        'HOST': os.environ['DBHOST'],
+        'HOST': host,
         'USER': os.environ['DBUSER'],
         'PASSWORD': os.environ['DBPASS'],
     }

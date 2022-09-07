@@ -1,0 +1,41 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "docker-build",
+			"label": "docker-build",
+			"platform": "python",
+			"dockerBuild": {
+				"tag": "msdocspythondjangoazurecontainerappdev:latest",
+				"dockerfile": "${workspaceFolder}/Dockerfile",
+				"context": "${workspaceFolder}",
+				"pull": true
+			}
+		},
+		{
+			"type": "docker-run",
+			"label": "docker-run: debug (with env variables)",
+			"dependsOn": [
+				"docker-build"
+			],
+			"dockerRun": {
+				"env": {
+					"DBHOST": "localhost",
+					"DBNAME": "restaurants_reviews_test",
+					"DBUSER": "postgres",
+					"DBPASS": "seekiesZ81",
+					"DEBUG": "True",
+					"ALLOWED_HOSTS": "localhost",
+			},
+			"python": {
+				"args": [
+					"runserver",
+					"0.0.0.0:8000",
+					"--nothreading",
+					"--noreload"
+				],
+				"file": "manage.py"
+			}
+		}
+	]
+}
