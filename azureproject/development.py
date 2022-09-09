@@ -12,15 +12,25 @@ ALLOWED_HOSTS = ['*']
 # Configure connection setting for local PostgreSQL instance.
 # Set these environment variables in the .env file for this project.  
 
-# Allow local to use remote database without changing form of environment variables.
-host = os.environ['DBHOST'] + ".postgres.database.azure.com" if 'REMOTE_POSTGRESQL' in os.environ else os.environ['DBHOST']
+# Local to instance settings.
+DBNAME=os.environ['DATABASE']
+DBHOST=os.environ['HOST']
+DBUSER=os.environ['USERNAME']
+DBPASS=os.environ['PASSWORD']
+
+# Configure database connection for remote PostgreSQL instance.
+if 'USE_REMOTE_POSTGRESQL' in os.environ:
+    DBNAME=os.environ['AZURE_POSTGRESQL_DATABASE']
+    DBHOST=os.environ['AZURE_POSTGRESQL_HOST']
+    DBUSER=os.environ['AZURE_POSTGRESQL_USERNAME']
+    DBPASS=os.environ['AZURE_POSTGRESQL_PASSWORD']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['DBNAME'],
-        'HOST': host,
-        'USER': os.environ['DBUSER'],
-        'PASSWORD': os.environ['DBPASS'],
+        'NAME': DBNAME,
+        'HOST': DBHOST,
+        'USER': DBUSER,
+        'PASSWORD': DBPASS,
     }
 }

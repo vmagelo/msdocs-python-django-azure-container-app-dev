@@ -17,9 +17,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['DBNAME'],
-        'HOST': os.environ['DBHOST'] + ".postgres.database.azure.com",
-        'USER': os.environ['DBUSER'],
-        'PASSWORD': os.environ['DBPASS'], 
+        'NAME': os.environ['AZURE_POSTGRESQL_DATABASE'],
+        'HOST': os.environ['AZURE_POSTGRESQL_HOST'],
+        'USER': os.environ['AZURE_POSTGRESQL_USERNAME'],
+        'PASSWORD': os.environ['AZURE_POSTGRESQL_PASSWORD'], 
     }
 }
