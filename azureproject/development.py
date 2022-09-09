@@ -13,10 +13,10 @@ ALLOWED_HOSTS = ['*']
 # Set these environment variables in the .env file for this project.  
 
 # Local to instance settings.
-DBNAME=os.environ['DATABASE']
-DBHOST=os.environ['HOST']
-DBUSER=os.environ['USERNAME']
-DBPASS=os.environ['PASSWORD']
+DBHOST=os.environ['LOCAL_HOST']
+DBNAME=os.environ['LOCAL_DATABASE']
+DBUSER=os.environ['LOCAL_USERNAME']
+DBPASS=os.environ['LOCAL_PASSWORD']
 
 # Configure database connection for remote PostgreSQL instance.
 if 'USE_REMOTE_POSTGRESQL' in os.environ:
