@@ -1,19 +1,17 @@
 import os
 from .settings import *
 
-# Configure the domain name using the environment variable
-# that Azure automatically creates for us.
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
-
-CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+# Configure allowed host names that can be served and trusted origins for Azure Container Apps.
+ALLOWED_HOSTS = ['.azurecontainerapps.io'] if 'RUNNING_IN_PRODUCTION' in os.environ else []
+CSRF_TRUSTED_ORIGINS = ['https://*.azurecontainerapps.io'] if 'RUNNING_IN_PRODUCTION' in os.environ else []
 DEBUG = False
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-# Configure database connection for Azure PostgreSQL instance.
-# DBHOST is only the server name, not the full URL
-# The full username for PostgreSQL flexible server is username (not @server-name).
+# Configure database connection for Azure PostgreSQL Flexible server instance.
+# AZURE_POSTGRESQL_HOST is the full URL.
+# AZURE_POSTGRESQL_USERNAME is just name without @server-name.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

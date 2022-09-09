@@ -6,15 +6,15 @@ from dotenv import load_dotenv
 
 def main():
     """Run administrative tasks."""
-    # If WEBSITE_HOSTNAME is defined as an environment variable, then we're running on Azure App Service
+    # If RUNNING_IN_PRODUCTION is defined as an environment variable, then we're running on Azure
 
     # Only for Local Development - Load environment variables from the .env file
-    if not 'WEBSITE_HOSTNAME' in os.environ:
+    if not 'RUNNING_IN_PRODUCTION' in os.environ:
         print("Loading environment variables for .env file")
         load_dotenv('./.env')
 
     # When running on Azure App Service you should use the production settings.
-    settings_module = "azureproject.production" if 'WEBSITE_HOSTNAME' in os.environ else 'azureproject.development'
+    settings_module = "azureproject.production" if 'RUNNING_IN_PRODUCTION' in os.environ else 'azureproject.development'
     print("Settings file: " + settings_module)
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 

@@ -11,9 +11,9 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-# Check for the WEBSITE_HOSTNAME environment variable to see if we are running in Azure App Service
+# Check for the RUNNING_IN_PRODUCTION environment variable to see if we are running in Azure App Service
 # If so, then load the settings from production.py
-settings_module = 'azureproject.production' if 'WEBSITE_HOSTNAME' in os.environ else 'azureproject.settings'
+settings_module = 'azureproject.production' if 'RUNNING_IN_PRODUCTION' in os.environ else 'azureproject.settings'
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
 application = get_wsgi_application()
