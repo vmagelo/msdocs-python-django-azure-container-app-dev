@@ -1,4 +1,4 @@
-# Deploy a Python (Django) app to Azure with Managed Identity 
+# Deploy a Python (Django) app to Azure to Azure Containers Apps 
 
 This Python app is a simple restaurant review application built with the [Django](https://www.djangoproject.com/) framework. The app uses stores application data in PostgreSQL with environment variables defining the connection info.
 
@@ -32,3 +32,13 @@ The [requirements.txt](./requirements.txt) has the following packages:
 | [python-dotenv](https://pypi.org/project/python-dotenv/) | Read key-value pairs from .env file and set them as environment variables. In this sample app, environment variables describe how to connect to the database and storage resources. Because managed identity is used no sensitive information is included in environment variables. <br><br> This package is used in the [manage.py](./manage.py) file to load environment variables. |
 | [requests](https://pypi.org/project/requests/) | Python HTTP for Humans. |
 | [whitenoise](https://pypi.org/project/whitenoise/) | Static file serving for WSGI applications, used in the deployed app. <br><br> This package is used in the [azureproject/production.py](./azureproject/production.py) file, which configures production settings. |
+
+## Deploying to Azure Container Apps
+
+The steps to do this are covered more completely in the **TBD** tutorial. Briefly, here are the steps:
+
+1. Fork and then clone locally.
+1. Build a container image from the repo.
+1. Create a PostgreSQL Flexible Server instance.
+1. Create a database on the server.
+1. Deploy the web app container to Container Apps.
