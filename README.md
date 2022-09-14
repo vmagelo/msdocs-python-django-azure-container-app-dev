@@ -1,4 +1,4 @@
-# Deploy a Python (Django) app to Azure to Azure Containers Apps 
+# Deploy a Python (Django) app to Azure to Azure Containers Apps
 
 This Python app is a simple restaurant review application built with the [Django](https://www.djangoproject.com/) framework. The app uses stores application data in PostgreSQL with environment variables defining the connection info.
 
