@@ -14,7 +14,7 @@ Here are some scenarios for using this repo:
 
 * Create a container from this repo and deploy to Web Apps for Containers (App Service). See [Overview: Containerized Python web app on Azure](https://docs.microsoft.com/azure/developer/python/tutorial-containerize-deploy-python-web-app-azure-01).
 
-* Create a container from this repo and deploy to Azure Container Apps. **This repo is targeting this scenario.** **TBD**
+* Create a container from this repo and deploy to [Azure Container Apps](https://azure.microsoft.com/services/container-apps/). **This repo is targeting this scenario.** **TBD**
 
 If you need an Azure account, you can [create on for free](https://azure.microsoft.com/free/).
 
